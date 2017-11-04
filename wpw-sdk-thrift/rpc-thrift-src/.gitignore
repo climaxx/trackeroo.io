@@ -1,0 +1,3 @@
+# Custom ignore file to ignore Thrift generated files
+
+gen-*

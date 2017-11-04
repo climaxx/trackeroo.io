@@ -1,0 +1,26 @@
+{
+  "host": "127.0.0.1",
+  "port": 9088,
+  "logFileName": "rpc-within-consumer.log",
+  "hceCard":
+  {
+    "firstName": "Bilbo",
+    "lastName": "Baggins",
+    "expMonth": 1,
+    "expYear": 2018,
+    "cardNumber": "5555555555554444",
+    "type": "Card",
+    "cvc": "123"
+  },
+  "pspConfig": {
+    // Worldpay Online Payments
+    "psp_name": "worldpayonlinepayments",
+    "api_endpoint": "https://api.worldpay.com/v1"
+
+    // Worldpay Total US / SecureNet
+    // "psp_name": "securenet",
+    // "api_endpoint": "https://gwapi.demo.securenet.com/api",
+    // "app_version": "0.1",
+    // "developer_id": "12345678",
+  }
+}

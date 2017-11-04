@@ -1,0 +1,25 @@
+{
+  "host": "127.0.0.1",
+  "port": 9090,
+  "logFileName": "rpc-within-producer-callbacks.log",
+  "pspConfig": {
+    // Worldpay Online Payments
+    "psp_name": "worldpayonlinepayments",
+    "api_endpoint": "https://api.worldpay.com/v1",
+    "hte_public_key": "T_C_f483c301-6c97-4e53-8588-e5d7e42417af",
+    "hte_private_key": "T_S_770347bc-372c-44ec-9af9-0cad0dd7c7e0",
+    "merchant_client_key": "T_C_f483c301-6c97-4e53-8588-e5d7e42417af",
+    "merchant_service_key": "T_S_770347bc-372c-44ec-9af9-0cad0dd7c7e0"
+
+    // Worldpay Total US / SecureNet
+    // "psp_name": "securenet",
+    // "api_endpoint": "https://gwapi.demo.securenet.com/api",
+    // "hte_public_key": "8c0ce953-455d-4c12-8d14-ff20d565e485",
+    // "hte_private_key": "KZ9kWv2EPy7M",
+    // "developer_id": "12345678",
+    // "app_version": "0.1",
+    // "public_key": "8c0ce953-455d-4c12-8d14-ff20d565e485",
+    // "secure_key": "KZ9kWv2EPy7M",
+    // "secure_net_id": "8008609",
+  }
+}

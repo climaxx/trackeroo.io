@@ -1,0 +1,16 @@
+module.exports = {
+  SECURE_NET : "securenet",
+  WORLDPAY_ONLINE_PAYMENTS : "worldpayonlinepayments",
+  PSP_NAME : "psp_name",
+  HTE_PUBLIC_KEY : "hte_public_key",
+  HTE_PRIVATE_KEY : "hte_private_key",
+  DEVELOPER_ID : "developer_id",
+  PUBLIC_KEY : "public_key",
+  SECURE_KEY : "secure_key",
+  SECURE_NET_ID : "secure_net_id",
+  APP_VERSION : "app_version",
+  HTTP_PROXY : "http_proxy",
+  MERCHANT_CLIENT_KEY : "merchant_client_id",
+  MERCHANT_SERVICE_KEY : "merchant_service_key",
+  API_ENDPOINT : "api_endpoint",
+};

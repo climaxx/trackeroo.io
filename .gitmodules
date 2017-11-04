@@ -1,0 +1,6 @@
+[submodule "wpw-sdk-thrift"]
+	path = wpw-sdk-thrift
+	url = https://github.com/WPTechInnovation/wpw-sdk-thrift.git
+[submodule "library/iot-core-component"]
+	path = library/iot-core-component
+	url = https://github.com/WPTechInnovation/wpw-sdk-iot-core

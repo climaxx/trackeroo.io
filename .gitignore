@@ -1,1 +1,5 @@
-/.idea
+*.log
+.idea/
+node_modules
+uuid.txt
+wpwithin.log
