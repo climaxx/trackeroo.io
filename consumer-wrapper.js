@@ -16,9 +16,9 @@ var logFileName = config.get('logFileName');
 module.exports = () => new Promise((accept, reject) => {
   wpwithin.createClient(host, port, true, logFileName, function (err, response) {
 
-    console.log("createClient.callback");
-    console.log("createClient.callback.err: " + err);
-    console.log("createClient.callback.response: %j", response);
+    // console.log("createClient.callback");
+    // console.log("createClient.callback.err: " + err);
+    // console.log("createClient.callback.response: %j", response);
 
     if (err == null) {
 
@@ -32,16 +32,16 @@ module.exports = () => new Promise((accept, reject) => {
 
     client.setup("NodeJS-Device", "Sample NodeJS consumer device", function (err, response) {
 
-      console.log("setup.callback.err: " + err);
-      console.log("setup.callback.response: %j", response);
-
-      console.log("Calling discover devices..");
+      // console.log("setup.callback.err: " + err);
+      // console.log("setup.callback.response: %j", response);
+      //
+      // console.log("Calling discover devices..");
 
       device = client.getDevice(function (err, response) {
 
-        console.log("getDevice.callback");
-        console.log("getDevice.callback.err: ", err);
-        console.log("getDevice.callback.response: %j", response);
+        // console.log("getDevice.callback");
+        // console.log("getDevice.callback.err: ", err);
+        // console.log("getDevice.callback.response: %j", response);
 
         if (err == null) {
 
@@ -60,7 +60,7 @@ module.exports = () => new Promise((accept, reject) => {
         return;
       }
       connectToDevice(res);
-      console.log('THE RESPONSE IS', res);
+      // console.log('THE RESPONSE IS', res);
     });
     /*
         client.deviceDiscovery(10000, function (err, response) {
@@ -128,12 +128,12 @@ module.exports = () => new Promise((accept, reject) => {
           reject(new Error(err));
         }
 
-        console.log("initConsumer.callback.err: %s", err);
-        console.log("initConsumer.callback.response: %j", response);
+        // console.log("initConsumer.callback.err: %s", err);
+        // console.log("initConsumer.callback.response: %j", response);
 
         if (err == null) {
 
-          console.log("Did initialise consumer.");
+          // console.log("Did initialise consumer.");
 
           getAvailableServices();
         }
@@ -144,17 +144,17 @@ module.exports = () => new Promise((accept, reject) => {
 
     client.requestServices(function (err, response) {
 
-      console.log("requestServices.callback.err: %s", err);
-      console.log("requestServices.callback.response: %j", response);
+      // console.log("requestServices.callback.err: %s", err);
+      // console.log("requestServices.callback.response: %j", response);
 
       if (err == null && response != null && response.length > 0) {
 
         var svc = response[0];
 
-        console.log("Services:");
-        console.log("Id: %s", svc.serviceId);
-        console.log("Description: %s", svc.serviceDescription);
-        console.log("----------");
+        // console.log("Services:");
+        // console.log("Id: %s", svc.serviceId);
+        // console.log("Description: %s", svc.serviceDescription);
+        // console.log("----------");
 
         getServicePrices(svc.serviceId);
       }
@@ -165,27 +165,27 @@ module.exports = () => new Promise((accept, reject) => {
 
     client.getServicePrices(serviceId, function (err, response) {
 
-      console.log("requestServicePrices.callback.err: %s", err);
-      console.log("requestServicePrices.callback.response: %j", response);
+      // console.log("requestServicePrices.callback.err: %s", err);
+      // console.log("requestServicePrices.callback.response: %j", response);
 
       if (err == null && response != null && response.length > 0) {
 
         var price = response[0];
 
-        console.log("Price details for ServiceId: %d", serviceId);
-        console.log("Id: %d", price.id);
-        console.log("Description: %s", price.description);
-        console.log("UnitId: %d", price.unitId);
-        console.log("unitDescription: %s", price.unitDescription);
-        console.log("PricePerUnit:");
-        console.log("\tAmount: %d", price.pricePerUnit.amount);
-        console.log("\tCurrency Code: %s", price.pricePerUnit.currencyCode);
-        console.log("----------");
+        // console.log("Price details for ServiceId: %d", serviceId);
+        // console.log("Id: %d", price.id);
+        // console.log("Description: %s", price.description);
+        // console.log("UnitId: %d", price.unitId);
+        // console.log("unitDescription: %s", price.unitDescription);
+        // console.log("PricePerUnit:");
+        // console.log("\tAmount: %d", price.pricePerUnit.amount);
+        // console.log("\tCurrency Code: %s", price.pricePerUnit.currencyCode);
+        // console.log("----------");
 
         getServicePriceQuote(serviceId, 10, price.id);
       } else {
 
-        console.log("Did not receive any service prices :/");
+        // console.log("Did not receive any service prices :/");
       }
     });
   }
@@ -194,27 +194,27 @@ module.exports = () => new Promise((accept, reject) => {
 
     client.selectService(serviceId, numberOfUnits, priceId, function (err, response) {
 
-      console.log("selectService.callback.err: %s", err);
-      console.log("selectService.callback.response: %j", response);
+      // console.log("selectService.callback.err: %s", err);
+      // console.log("selectService.callback.response: %j", response);
 
       if (err == null && response != null) {
 
-        console.log("TotalPriceResponse:");
-        console.log("ServerId: %s", response.serverId);
-        console.log("ClientId: %s", response.clientId);
-        console.log("PriceId: %d", response.priceId);
-        console.log("UnitsToSupply: %d", response.unitsToSupply);
-        console.log("TotalPrice: %d", response.totalPrice);
-        console.log("PaymentReferenceId: %s", response.paymentReferenceId);
-        console.log("MerchantClientKey: %s", response.merchantClientKey);
-        console.log("CurrencyCode: %s", response.currencyCode);
-        console.log("------");
+        // console.log("TotalPriceResponse:");
+        // console.log("ServerId: %s", response.serverId);
+        // console.log("ClientId: %s", response.clientId);
+        // console.log("PriceId: %d", response.priceId);
+        // console.log("UnitsToSupply: %d", response.unitsToSupply);
+        // console.log("TotalPrice: %d", response.totalPrice);
+        // console.log("PaymentReferenceId: %s", response.paymentReferenceId);
+        // console.log("MerchantClientKey: %s", response.merchantClientKey);
+        // console.log("CurrencyCode: %s", response.currencyCode);
+        // console.log("------");
 
         purchaseService(serviceId, response);
 
       } else {
 
-        console.log("Did not receive total price response from selectService()");
+        // console.log("Did not receive total price response from selectService()");
       }
     });
   }
@@ -223,22 +223,22 @@ module.exports = () => new Promise((accept, reject) => {
 
     client.makePayment(totalPriceResponse, function (err, response) {
 
-      console.log("makePayment.callback.err: %s", err);
-      console.log("makePayment.callback.response: %j", response);
+      // console.log("makePayment.callback.err: %s", err);
+      // console.log("makePayment.callback.response: %j", response);
 
       if (err == null && response != null) {
 
-        console.log("Resonse from make payment:");
-        console.log("ServerID: %s", response.serverId);
-        console.log("ClientID: %s", response.clientId);
-        console.log("TotalPaid: %d", response.totalPaid);
-        console.log("ServiceDeliveryToken:");
-        console.log("\tKey: %s", response.serviceDeliveryToken.key);
-        console.log("\tIssued: %s", response.serviceDeliveryToken.issued);
-        console.log("\tExpiry: %s", response.serviceDeliveryToken.expiry);
-        console.log("\tRefundOnExpiry: %b", response.serviceDeliveryToken.refundOnExpiry);
-        console.log("\tSignature: %s", response.serviceDeliveryToken.signature);
-        console.log("----------");
+        // console.log("Resonse from make payment:");
+        // console.log("ServerID: %s", response.serverId);
+        // console.log("ClientID: %s", response.clientId);
+        // console.log("TotalPaid: %d", response.totalPaid);
+        // console.log("ServiceDeliveryToken:");
+        // console.log("\tKey: %s", response.serviceDeliveryToken.key);
+        // console.log("\tIssued: %s", response.serviceDeliveryToken.issued);
+        // console.log("\tExpiry: %s", response.serviceDeliveryToken.expiry);
+        // console.log("\tRefundOnExpiry: %b", response.serviceDeliveryToken.refundOnExpiry);
+        // console.log("\tSignature: %s", response.serviceDeliveryToken.signature);
+        // console.log("----------");
 
         beginServiceDelivery(serviceId, response.serviceDeliveryToken, 8);
 
@@ -253,12 +253,12 @@ module.exports = () => new Promise((accept, reject) => {
 
     client.beginServiceDelivery(serviceId, serviceDeliveryToken, unitsToSupply, function (err, response) {
 
-      console.log("beginServiceDelivery.callback.err: %s", err);
-      console.log("beginServiceDelivery.callback.response: %j", response);
+      // console.log("beginServiceDelivery.callback.err: %s", err);
+      // console.log("beginServiceDelivery.callback.response: %j", response);
 
       var sleep = require('system-sleep');
 
-      console.log("Will sleep for 10 seconds..");
+      // console.log("Will sleep for 10 seconds..");
       sleep(10);
 
       endServiceDelivery(serviceId, serviceDeliveryToken, 8);
@@ -269,8 +269,8 @@ module.exports = () => new Promise((accept, reject) => {
 
     client.endServiceDelivery(serviceId, serviceDeliveryToken, unitsReceived, function (err, response) {
 
-      console.log("endServiceDelivery.callback.err: %s", err);
-      console.log("endServiceDelivery.callback.response: %j", response);
+      // console.log("endServiceDelivery.callback.err: %s", err);
+      // console.log("endServiceDelivery.callback.response: %j", response);
       accept();
     });
   }
