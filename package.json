@@ -4,7 +4,7 @@
   "description": "Nodejs API for the Worldpay Within SDK",
   "main": "index.js",
   "scripts": {
-    "consumer": "node example-consumer.js",
+    "consumer": "node consumer.js",
     "producer": "node example-producer-callbacks.js"
   },
   "keywords": [
@@ -13,7 +13,8 @@
   "author": "wptechinnovation",
   "license": "MIT",
   "dependencies": {
-    "config": "latest",
+    "config": "^1.27.0",
+    "express": "^4.16.2",
     "system-sleep": "latest",
     "thrift": "0.10.0"
   }

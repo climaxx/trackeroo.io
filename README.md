@@ -23,7 +23,7 @@ Worldpay Within SDK - Node.js
 It will start producer application with communication on TCP port 9090 from localhost (Apache thrift communication)
 
 4. In another terminal / cmd, (or on another device, on the same network) run:
-`node example-consumer.js`
+`node consumer-wrapper.js`
 
 It will start consumer application with communication on TCP port 9088 from localhost (Apache thrift communication)
 
