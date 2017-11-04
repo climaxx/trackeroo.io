@@ -1,0 +1,61 @@
+@font-face {
+    font-family: "Ubuntu-Regular";
+    src: url("/assets/fonts/Ubuntu-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Ubuntu-Light";
+    src: url("/assets/fonts/Ubuntu-Light.ttf");
+}
+
+@font-face {
+    font-family: "Ubuntu-Bold";
+    src: url("/assets/fonts/Ubuntu-Bold.ttf");
+}
+
+div.ui.grid.trackeroo {
+	min-height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Ubuntu-Regular";
+}
+
+div.four.wide.column.trackeroo {
+	background-color: #253F53;
+	text-align: center;
+}
+
+img.logo.trackeroo {
+	width: 180px;
+	height: 142px;
+	margin-top: 30%;
+}
+
+p.copyright.trackeroo {
+	position: absolute;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+	text-align: center;
+	color: #1795E2;
+	font-family: "Ubuntu-Light";
+	font-size: 14px;
+}
+
+h3.ui.header.trackeroo {
+	color: #1795E2;
+	text-align: center;
+	font-family: "Ubuntu-Light";
+}
+
+a.ui.fluid.login.trackeroo.button {
+	background-color: #1795E2;
+	text-align: center;
+	color: #FFFFFF;
+	font-family: "Ubuntu-Light";
+}
+
+form.ui.form.trackeroo {
+	width: 60%;
+	margin: 0 auto;
+}

@@ -1,0 +1,62 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include ../layouts/header.ejs %>
+<!--
+including sidebar content which is common for all pages
+-->	
+<%- include ../layouts/sidebar.ejs %>	
+
+<div class="twelve wide column">
+	<table class="ui celled table">
+	 	<thead>
+	    	<tr>
+				<th>ID</th>
+				<th>Card Number</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Bonus</th>
+				<th>Amount</th>
+				<th>Actions</th>
+	  		</tr>
+	  	</thead>
+	  	<tbody>
+	    	<% if (data) { %>
+			<% data.forEach(function(employee){ %>
+				<tr>
+					<td><%= employee.id %></td>
+					<td><%= employee.card_number %></td>
+					<td><%= employee.first_name %></td>
+					<td><%= employee.last_name %></td>
+					<td><%= employee.email %></td>
+					<td>
+						<% if(employee.bonus === 1){ %>
+							<span>YES</span>
+ 						<% } else{ %>  
+   							<span>NO</span>
+						<% } %>
+					</td>
+					<td><%= employee.amount %>£</td>
+					<td>
+						<form method="post" action="/employees/edit/<%= employee.id %>" name="form1">
+							<button class="mini ui button positive" onClick="return confirm('Are you sure you want to pay?" type="submit">PAY</button>
+							<input type="hidden" name="_method" value="PUT" />
+						</form>
+					</td>
+				</tr>
+			<% }) %>
+			<% } %>
+		</tbody>
+	  	<tfoot>
+	  		<tr>
+	  			<th colspan="8"></th>
+	  		</tr>
+	  	</tfoot>
+	</table>
+</div>
+
+<!--
+including footer content which is common for all pages
+-->
+<%- include ../layouts/footer.ejs %>

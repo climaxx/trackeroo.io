@@ -1,0 +1,37 @@
+<!--
+including header content which is common for all pages
+-->
+<%- include layouts/header.ejs %>	
+<!--including sidebar content which is common for all pages
+-->	
+<%- include layouts/sidebar.ejs %>	
+
+<div class="twelve wide column">
+	<div class="cover trackeroo">
+		<form class="ui form trackeroo">
+      		<div class="ui segment">
+            <h3 class="ui header trackeroo">Log in to your Account</h3>
+        		<div class="field">
+          			<div class="ui left icon input">
+            			<i class="user icon"></i>
+            			<input type="text" name="email" placeholder="Username">
+          			</div>
+        		</div>
+        		<div class="field">
+          			<div class="ui left icon input">
+            			<i class="lock icon"></i>
+            			<input type="password" name="password" placeholder="Password">
+          			</div>
+        		</div>
+            <div class="field">
+                <a class="ui fluid login trackeroo button" href="/employees">LOG IN</a>
+            </div>
+      	</div>
+    </form>
+	</div>
+</div>
+
+<!--
+including footer content which is common for all pages
+-->
+<%- include layouts/footer.ejs %>
