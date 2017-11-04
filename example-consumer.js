@@ -54,7 +54,7 @@ function setup() {
 
 function discoverDevices() {
 	client.searchForDevice(10000, "Trackeroo", (_, res)=>{
-        connectToDevice(res);
+		connectToDevice(res);
 		console.log('THE RESPONSE IS', res);
 } );
 /*
@@ -265,3 +265,4 @@ function endServiceDelivery(serviceId, serviceDeliveryToken, unitsReceived) {
         console.log("endServiceDelivery.callback.response: %j", response);
         process.exit(0);
     });
+}
