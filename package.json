@@ -4,7 +4,8 @@
   "description": "Nodejs API for the Worldpay Within SDK",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "consumer": "node example-consumer.js",
+    "producer": "node example-producer-callbacks.js"
   },
   "keywords": [
     "iot"
