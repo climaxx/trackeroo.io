@@ -1,6 +1,12 @@
 var express = require('express');
 var app = express();
 var mysql = require('mysql');
+var WebSocket = require('ws');
+
+// set Web Socket
+// var ws = new WebSocket('ws://www.host.com/path', {
+// 	perMessageDeflate: false
+// });
 
 /**
  * This middleware provides a consistent API 

@@ -35,7 +35,7 @@
 							<td class="left aligned"><%= employee.last_name %></td>
 							<td class="left aligned"><%= employee.email %></td>
 							<td class="center aligned">
-								<% if(employee.bonus === 1){ %>
+								<% if(employee.bonus){ %>
 									<span>YES</span>
 		 						<% } else{ %>  
 		   							<span>NO</span>
@@ -43,10 +43,11 @@
 							</td>
 							<td class="center aligned"><%= employee.amount %>&nbsp;£</td>
 							<td class="center aligned">
-								<form method="post" action="/employees/edit/<%= employee.id %>" name="form1">
-									<button class="mini ui button positive" type="submit">PAY</button>
-									<input type="hidden" name="_method" value="PUT" />
-								</form>
+								<% if(employee.bonus){ %>
+									<a href="/employees/edit/<%= employee.id %>" class="mini ui fluid button positive">PAY NOW</a>
+		 						<% } else{ %>  
+		   							<button class="mini ui fluid button negative">WAS PAID</button>
+								<% } %>
 							</td>
 						</tr>
 					<% }) %>
@@ -57,7 +58,5 @@
 	</div>
 </div>
 
-<!--
-including footer content which is common for all pages
--->
+<!-- including footer content which is common for all pages -->
 <%- include ../layouts/footer.ejs %>

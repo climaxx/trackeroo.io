@@ -125,7 +125,7 @@ app.post('/add', function(req, res, next){
     };
 });
 
-// SHOW EDIT USER FORM
+// SHOW EDIT EMPLOYEE FORM
 app.get('/edit/(:id)', function(req, res, next){
 	req.getConnection(function(error, conn) {
 		conn.query('SELECT * FROM employees WHERE id = ' + req.params.id, function(err, rows, fields) {
@@ -133,31 +133,32 @@ app.get('/edit/(:id)', function(req, res, next){
 			
 			// if user not found
 			if (rows.length <= 0) {
-				req.flash('error', 'User not found with id = ' + req.params.id)
-				res.redirect('/employees')
+				req.flash('error', 'Employee not found with id = ' + req.params.id);
+				res.redirect('/employees');
 			}
 			else { // if user found
 				// render to views/user/edit.ejs template file
 				res.render('employees/edit', {
-					title: 'Edit Employee', 
+					title: 'Trackeroo1984 - Pay Employee', 
 					//data: rows[0],	
 					id: rows[0].id,
 					first_name: rows[0].first_name,
 					last_name: rows[0].last_name,
 					email: rows[0].email,
 					bonus: rows[0].bonus,	
-					amount: rows[0].amount				
-				})
+					amount: rows[0].amount,
+					card_number: rows[0].card_number,
+					id_depart: rows[0].id_depart				
+				});
 			}			
 		});
 	});
 });
 
-// EDIT USER POST ACTION
+// EDIT EMPLOYEE POST ACTION
 app.put('/edit/(:id)', function(req, res, next) {
-	req.assert('first_name', 'Name is required').notEmpty();           //Validate name
-	req.assert('last_name', 'Age is required').notEmpty();             //Validate age
-    req.assert('email', 'A valid email is required').isEmail();  //Validate email
+	// req.assert('bonus', 'Bonus is required').notEmpty();           //Validate name
+	// req.assert('amount', 'Amount is required').notEmpty();             //Validate age
 
     var errors = req.validationErrors();
     
@@ -172,40 +173,43 @@ app.put('/edit/(:id)', function(req, res, next) {
 		req.sanitize('comment').escape(); // returns 'a &lt;span&gt;comment&lt;/span&gt;'
 		req.sanitize('username').trim(); // returns 'a user'
 		********************************************/
-		var user = {
-			first_name: req.sanitize('first_name').escape().trim(),
-			last_name: req.sanitize('last_name').escape().trim(),
-			email: req.sanitize('email').escape().trim()
+		var employee = {
+			bonus: 0,
+			amount: 0.00
 		};
 		
 		req.getConnection(function(error, conn) {
-			conn.query('UPDATE employees SET ? WHERE id = ' + req.params.id, user, function(err, result) {
+			conn.query('UPDATE employees SET ? WHERE id = ' + req.params.id, employee, function(err, result) {
 				//if(err) throw err
 				if (err) {
 					req.flash('error', err);
 					
 					// render to views/user/add.ejs
 					res.render('employees/edit', {
-						title: 'Edit Employee',
+						title: 'Trackeroo1984 - Pay Employee',
 						id: req.params.id,
 						first_name: req.body.first_name,
 						last_name: req.body.last_name,
 						email: req.body.email,
 						bonus: req.body.bonus,	
-						amount: req.body.amount
+						amount: req.body.amount,
+						card_number: req.body.card_number,
+						id_depart: req.body.id_depart
 					})
 				} else {
-					req.flash('success', 'Data updated successfully!');
+					req.flash('success', 'Payment was made successfully!');
 					
 					// render to views/user/add.ejs
 					res.render('employees/edit', {
-						title: 'Edit Employee',
+						title: 'Trackeroo1984 - Pay Employee',
 						id: req.params.id,
 						first_name: req.body.first_name,
 						last_name: req.body.last_name,
 						email: req.body.email,
 						bonus: req.body.bonus,	
-						amount: req.body.amount
+						amount: req.body.amount,
+						card_number: req.body.card_number,
+						id_depart: req.body.id_depart
 					});
 				}
 			})
@@ -223,13 +227,14 @@ app.put('/edit/(:id)', function(req, res, next) {
 		 * because req.param('name') is deprecated
 		 */ 
         res.render('employees/edit', { 
-            title: 'Edit Employee',            
+            title: 'Trackeroo1984 - Edit Employee',            
 			id: req.params.id, 
 			first_name: req.body.first_name,
 			last_name: req.body.last_name,
 			email: req.body.email,
 			bonus: req.body.bonus,	
-			amount: req.body.amount
+			amount: req.body.amount,
+			card_number: req.body.card_number
         });
     }
 })
@@ -242,13 +247,13 @@ app.delete('/delete/(:id)', function(req, res, next) {
 		conn.query('DELETE FROM employees WHERE id = ' + req.params.id, employee, function(err, result) {
 			//if(err) throw err
 			if (err) {
-				req.flash('error', err)
+				req.flash('error', err);
 				// redirect to users list page
-				res.redirect('/employees')
+				res.redirect('/employees');
 			} else {
-				req.flash('success', 'User deleted successfully! id = ' + req.params.id)
+				req.flash('success', 'User deleted successfully! id = ' + req.params.id);
 				// redirect to users list page
-				res.redirect('/employees')
+				res.redirect('/employees');
 			}
 		});
 	});
