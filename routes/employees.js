@@ -103,7 +103,7 @@ app.post('/add', function(req, res, next){
 						id_depart: employee.id_depart
 					});
 				} else {
-					axios.get('http://raspberry024.local:8080/payout')
+					axios.get('http://raspberrypi004.local:8080/payout')
 						.then(function (response) {
 					    	console.log(response);
 					  	})
