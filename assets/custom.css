@@ -20,14 +20,14 @@ div.ui.grid.trackeroo {
     font-family: "Ubuntu-Regular";
 }
 
-div.four.wide.column.trackeroo {
+div.three.wide.column.trackeroo {
 	background-color: #253F53;
 	text-align: center;
 }
 
 img.logo.trackeroo {
-	width: 180px;
-	height: 142px;
+	width: 130px;
+	height: 102px;
 	margin-top: 30%;
 }
 
@@ -39,23 +39,90 @@ p.copyright.trackeroo {
 	text-align: center;
 	color: #1795E2;
 	font-family: "Ubuntu-Light";
-	font-size: 14px;
+	font-size: 12px;
+    letter-spacing: 0.3px
 }
 
-h3.ui.header.trackeroo {
+h3.ui.header.trackeroo, label.login.trackeroo, a.item.login.trackeroo, label.login.trackeroo:hover {
 	color: #1795E2;
 	text-align: center;
 	font-family: "Ubuntu-Light";
+	font-weight: 500;
+	cursor: default;
+	margin-bottom: 35px;
 }
 
-a.ui.fluid.login.trackeroo.button {
+label.login.trackeroo {
+	float: left;
+	font-size: 12px;
+}
+
+a.item.login.trackeroo {
+	float: right;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+button.ui.login.trackeroo.button {
+	width: 45%;
 	background-color: #1795E2;
 	text-align: center;
 	color: #FFFFFF;
 	font-family: "Ubuntu-Light";
+	border-radius: 20px;
+	padding: 15px;
 }
 
-form.ui.form.trackeroo {
-	width: 60%;
+div.ui.form.login.trackeroo {
+	width: 45%;
+	top: 15%;
 	margin: 0 auto;
+}
+
+div.sixteen.wide.column.account {
+	background-color: #1795E2;
+	color: #FFFFFF;
+}
+
+div.account-left {
+	width: 50%;
+	float: left;
+	text-align: left;
+}
+
+div.account-right {
+	width: 50%;
+	float: right;
+	text-align: right;
+}
+
+div.ui.segment.trackeroo {
+	padding: 10%;
+	box-shadow: 0px 3px 15px 3px rgba(223,223,223,0.50);
+	border: 0;
+    border-radius: 0
+}
+
+div.field.center.trackeroo {
+	text-align: center;
+}
+
+img.icon-login {
+	width: 33px;
+	height: 33px;
+}
+
+div.twelve.wide.column.login.trackeroo {
+	background-image: url("/assets/images/background.png");
+    background-repeat: no-repeat;
+    background-position-x: 175%;
+    background-position-y: -20%;
+    opacity: 0.9;
+}
+
+.trackeroo-head {
+	background-color: #253F53 !important;
+	color: #FFFFFF !important;
+	font-family: "Ubuntu-Regular";
+    font-weight: 500 !important;
 }

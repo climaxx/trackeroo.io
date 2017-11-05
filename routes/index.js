@@ -3,7 +3,7 @@ var app = express();
 
 app.get('/', function(req, res) {
 	// render to views/index.ejs template file
-	res.render('index', {title: 'Trackeroo1984'});
+	res.render('index', {title: 'Trackeroo1984 - Login'});
 });
 
 /** 

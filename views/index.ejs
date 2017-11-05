@@ -1,35 +1,40 @@
-<!--
-including header content which is common for all pages
--->
+<!-- including header content which is common for all pages -->
 <%- include layouts/header.ejs %>	
-<!--including sidebar content which is common for all pages
--->	
+<!--including sidebar content which is common for all pages -->	
 <%- include layouts/sidebar.ejs %>	
 
-<div class="twelve wide column">
-	<div class="cover trackeroo">
-		<form class="ui form trackeroo">
-      		<div class="ui segment">
-            <h3 class="ui header trackeroo">Log in to your Account</h3>
-        		<div class="field">
-          			<div class="ui left icon input">
-            			<i class="user icon"></i>
-            			<input type="text" name="email" placeholder="Username">
-          			</div>
-        		</div>
-        		<div class="field">
-          			<div class="ui left icon input">
-            			<i class="lock icon"></i>
-            			<input type="password" name="password" placeholder="Password">
-          			</div>
-        		</div>
-            <div class="field">
-                <a class="ui fluid login trackeroo button" href="/employees">LOG IN</a>
+
+<div class="thirteen wide column login trackeroo">
+	<div class="ui form login trackeroo">
+  		<div class="ui segment trackeroo">
+            <div class="field center trackeroo">
+                <img class="icon-login" src="/assets/images/icon-user.png" alt="Login" />
             </div>
-      	</div>
-    </form>
-	</div>
+            <h3 class="ui header trackeroo">Log in to your Account</h3>
+    		<div class="field">
+    			<input type="text" name="username" placeholder="Username">
+    		</div>
+    		<div class="field">
+        		<input type="password" name="password" placeholder="Password">
+    		</div>
+            <div class="two fields">
+                <div class="field">
+                    <div class="ui checkbox">
+                        <input type="checkbox" name="example">
+                        <label class="login trackeroo">Remember me</label>
+                    </div>
+                </div>
+                <div class="field">
+                    <a class="item login trackeroo" href="javascript;">Forgot Password?</a>
+                </div>
+            </div>
+            <div class="field center trackeroo">
+                <button class="ui login trackeroo button" onclick="Login()">LOG IN</button>
+            </div>
+  	    </div>
+    </div>
 </div>
+
 
 <!--
 including footer content which is common for all pages
