@@ -1,0 +1,61 @@
+//3 - 5 noiembrie 2017
+//Florea Bogdan
+
+//libraries included
+#include <Servo.h>
+
+//definire variabile pentru servo si led RGB
+Servo myservo;
+int rPin = 11;
+int gPin = 10;
+int bPin = 9;
+int pos = 0;
+int buzzer = 5;
+
+
+void setup() {
+  // initializare componente
+  pinMode(rPin, OUTPUT); //red 
+  pinMode(gPin, OUTPUT); //green
+  pinMode(bPin, OUTPUT); //blue
+  myservo.attach(6); //micro servo-motor
+  pinMode(buzzer, OUTPUT); //added buzzer
+  Serial.begin(9600);
+}
+
+void loop() {
+  
+  // put your main code here, to run repeatedly:
+  
+  Serial.println("Bariera inchisa!");
+  myservo.write(0); //bariera inchisa
+  setColor(255, 0, 0); // rosu
+  delay(4000);
+  
+  Serial.println("Bariera deschisa!");
+  tone(buzzer, 500);
+  for (int j = 0; j < 91; j++)
+  {
+    myservo.write(j); //bariera deschisa
+    delay(5);  
+  }
+  
+  setColor(0, 255, 0); //verde ptr 2.5 secunde
+  delay(2500);
+  noTone(buzzer);
+  Serial.println("Bariera se intoarce");
+  setColor(255, 0, 255); //galben
+  for (int i = 90; i >= 0; i--)
+  {
+    myservo.write(i);
+    delay(20);
+  }
+}
+
+// functie pentru setare culoare RGB LED
+void setColor(int red, int green, int blue)
+{ //setare culoare led RGB
+  analogWrite(rPin, red);
+  analogWrite(gPin, green);
+  analogWrite(bPin, blue);
+}
