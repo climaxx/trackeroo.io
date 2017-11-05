@@ -1,0 +1,54 @@
+
+<html>
+	<head>
+         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:regular,bold&subset=Latin">
+	</head>
+
+	<body>
+    	<div id="textCenterOfScreen"></div>
+    </body>
+</html>
+
+<style>
+	body {	    
+		height:100%;
+		width:100%;
+	    background-color: black;
+	    background-repeat-x: no-repeat;
+		background-repeat-y: no-repeat;
+		background-position: center;
+		background-size: cover;
+	}
+
+	div#textCenterOfScreen {
+		position: relative;
+		width: 40%;
+		top: 45%;
+		margin: 0 auto;
+		font-family: "Ubuntu";
+	    color: white;
+	    font-size: 35px;
+	    font-weight: bold;
+	    text-align: center;
+	}
+</style>
+
+<script>
+	var latestResponse = "";
+    setInterval(function(){ 
+	    var xmlHttp = new XMLHttpRequest();
+
+	    	xmlHttp.withCredentials = false;
+	    	xmlHttp.open( "GET", "http://10.0.0.156:3000/employees/latest", false );
+	    	xmlHttp.send( null );
+		   	
+		   	latestResponse = xmlHttp.responseText;
+		  	showSucces(xmlHttp.responseText)
+	   	 }, 1000);
+
+	function showSucces(name){
+        document.getElementsByTagName('body')[0].style.backgroundImage = 'url(newImage.jpg)';
+		document.getElementById("textCenterOfScreen").innerHTML = name;
+	}
+
+</script>
