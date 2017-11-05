@@ -171,8 +171,8 @@ module.exports = () => new Promise((accept, reject) => {
 
         client.getServicePrices(serviceId, function (err, response) {
 
-          console.log("requestServicePrices.callback.err: %s", err);
-          console.log("requestServicePrices.callback.response: %j", response);
+          // console.log("requestServicePrices.callback.err: %s", err);
+          // console.log("requestServicePrices.callback.response: %j", response);
 
           if (err) {
             reject(new Error(err));
@@ -186,20 +186,20 @@ module.exports = () => new Promise((accept, reject) => {
 
             var price = response[0];
 
-            console.log("Price details for ServiceId: %d", serviceId);
-            console.log("Id: %d", price.id);
-            console.log("Description: %s", price.description);
-            console.log("UnitId: %d", price.unitId);
-            console.log("unitDescription: %s", price.unitDescription);
-            console.log("PricePerUnit:");
-            console.log("\tAmount: %d", price.pricePerUnit.amount);
-            console.log("\tCurrency Code: %s", price.pricePerUnit.currencyCode);
-            console.log("----------");
+            // console.log("Price details for ServiceId: %d", serviceId);
+            // console.log("Id: %d", price.id);
+            // console.log("Description: %s", price.description);
+            // console.log("UnitId: %d", price.unitId);
+            // console.log("unitDescription: %s", price.unitDescription);
+            // console.log("PricePerUnit:");
+            // console.log("\tAmount: %d", price.pricePerUnit.amount);
+            // console.log("\tCurrency Code: %s", price.pricePerUnit.currencyCode);
+            // console.log("----------");
 
             getServicePriceQuote(serviceId, 10, price.id);
           } else {
 
-            console.log("Did not receive any service prices :/");
+            // console.log("Did not receive any service prices :/");
           }
         });
       }
@@ -208,30 +208,36 @@ module.exports = () => new Promise((accept, reject) => {
 
         client.selectService(serviceId, numberOfUnits, priceId, function (err, response) {
 
-          console.log("selectService.callback.err: %s", err);
-          console.log("selectService.callback.response: %j", response);
+          // console.log("selectService.callback.err: %s", err);
+          // console.log("selectService.callback.response: %j", response);
           if (err) {
             reject(new Error(err));
             return;
           }
+          if (response == null) {
+            reject(new Error("Did not receive total price response from selectService()"));
+            return;
+          }
+
+
           if (err == null && response != null) {
 
-            console.log("TotalPriceResponse:");
-            console.log("ServerId: %s", response.serverId);
-            console.log("ClientId: %s", response.clientId);
-            console.log("PriceId: %d", response.priceId);
-            console.log("UnitsToSupply: %d", response.unitsToSupply);
-            console.log("TotalPrice: %d", response.totalPrice);
-            console.log("PaymentReferenceId: %s", response.paymentReferenceId);
-            console.log("MerchantClientKey: %s", response.merchantClientKey);
-            console.log("CurrencyCode: %s", response.currencyCode);
-            console.log("------");
+            // console.log("TotalPriceResponse:");
+            // console.log("ServerId: %s", response.serverId);
+            // console.log("ClientId: %s", response.clientId);
+            // console.log("PriceId: %d", response.priceId);
+            // console.log("UnitsToSupply: %d", response.unitsToSupply);
+            // console.log("TotalPrice: %d", response.totalPrice);
+            // console.log("PaymentReferenceId: %s", response.paymentReferenceId);
+            // console.log("MerchantClientKey: %s", response.merchantClientKey);
+            // console.log("CurrencyCode: %s", response.currencyCode);
+            // console.log("------");
 
             purchaseService(serviceId, response);
 
           } else {
 
-            console.log("Did not receive total price response from selectService()");
+            // console.log("Did not receive total price response from selectService()");
           }
         });
       }
@@ -243,28 +249,31 @@ module.exports = () => new Promise((accept, reject) => {
             reject(new Error(err));
             return;
           }
-          console.log("makePayment.callback.err: %s", err);
-          console.log("makePayment.callback.response: %j", response);
-
+          // console.log("makePayment.callback.err: %s", err);
+          // console.log("makePayment.callback.response: %j", response);
+          if (err) {
+            reject(new Error(err));
+            return;
+          }
           if (err == null && response != null) {
 
-            console.log("Resonse from make payment:");
-            console.log("ServerID: %s", response.serverId);
-            console.log("ClientID: %s", response.clientId);
-            console.log("TotalPaid: %d", response.totalPaid);
-            console.log("ServiceDeliveryToken:");
-            console.log("\tKey: %s", response.serviceDeliveryToken.key);
-            console.log("\tIssued: %s", response.serviceDeliveryToken.issued);
-            console.log("\tExpiry: %s", response.serviceDeliveryToken.expiry);
-            console.log("\tRefundOnExpiry: %b", response.serviceDeliveryToken.refundOnExpiry);
-            console.log("\tSignature: %s", response.serviceDeliveryToken.signature);
-            console.log("----------");
+            // console.log("Resonse from make payment:");
+            // console.log("ServerID: %s", response.serverId);
+            // console.log("ClientID: %s", response.clientId);
+            // console.log("TotalPaid: %d", response.totalPaid);
+            // console.log("ServiceDeliveryToken:");
+            // console.log("\tKey: %s", response.serviceDeliveryToken.key);
+            // console.log("\tIssued: %s", response.serviceDeliveryToken.issued);
+            // console.log("\tExpiry: %s", response.serviceDeliveryToken.expiry);
+            // console.log("\tRefundOnExpiry: %b", response.serviceDeliveryToken.refundOnExpiry);
+            // console.log("\tSignature: %s", response.serviceDeliveryToken.signature);
+            // console.log("----------");
 
             beginServiceDelivery(serviceId, response.serviceDeliveryToken, 8);
 
           } else {
 
-            console.log("Did not receive correct response to make payment..");
+            // console.log("Did not receive correct response to make payment..");
           }
         });
       }
