@@ -12,7 +12,7 @@ sleep 5
 # TODO: Wait for something like
 # time="2017-10-10T08:48:11+02:00" level=debug msg="Did successfully write broadcast message"
 
-node example-consumer.js >"${stdout_c}" &
+node consumer-wrapper.js >"${stdout_c}" &
 pid_c=$!
 sleep 2
 # Wait for something like

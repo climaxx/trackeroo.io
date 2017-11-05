@@ -104,11 +104,11 @@ function addService() {
 
     var rwPrice = new types.Price();
     rwPrice.id = 1;
-    rwPrice.description = "Car wash";
+    rwPrice.description = "On Time Bonus";
     rwPrice.unitId = 1;
-    rwPrice.unitDescription = "Single wash";
+    rwPrice.unitDescription = "Bonus for coming to work on time";
     var pricePerUnit = new types.PricePerUnit();
-    pricePerUnit.amount = 650;
+    pricePerUnit.amount = 100;
     pricePerUnit.currencyCode = "GBP";
     rwPrice.pricePerUnit = pricePerUnit;
     service.prices = new Array();
