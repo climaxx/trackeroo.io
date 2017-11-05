@@ -103,6 +103,14 @@ app.post('/add', function(req, res, next){
 						id_depart: employee.id_depart
 					});
 				} else {
+					axios.get('http://raspberry024.local:8080/payout')
+						.then(function (response) {
+					    	console.log(response);
+					  	})
+					  	.catch(function (error) {
+					    	console.log(error);
+					});
+
 					req.flash('success', 'Data added successfully!');
 
 					// render to views/user/add.ejs
