@@ -1,0 +1,89 @@
+<!-- including header content which is common for all pages -->
+<%- include ../layouts/header.ejs %>
+<!-- including sidebar content which is common for all pages -->	
+<%- include ../layouts/sidebar.ejs %>		
+
+<div class="thirteen wide column">
+	<div class="ui grid">
+		<!-- including account content which is common for all pages -->
+		<%- include ../layouts/account.ejs %>
+
+		<div class="sixteen wide column"> 
+			<form class="ui form" action="/employees/edit/<%= id %>" method="post" name="form1">
+				<h3 class="ui dividing header">
+					<i class="money icon"></i>
+					<div class="content">Approve Payment for "<%= first_name %> <%= last_name %>"</div>
+				</h3>
+			    <div class="two fields">
+			    	<div class="field">
+			      		<label>First Name</label>
+			      		<div class="ui disabled input">
+			        		<input type="text" name="first_name" value="<%= first_name %>">
+			        	</div>
+			      	</div>
+			      	<div class="field">
+			      		<label>Last Name</label>
+			      		<div class="ui disabled input">
+			        		<input type="text" name="last_name" value="<%= last_name %>">
+			        	</div>
+			      	</div>
+			    </div>
+			    <div class="two fields">
+			    	<div class="field">
+			      		<label>Email</label>
+			      		<div class="ui disabled input">
+			        		<input type="text" name="email" value="<%= email %>">
+			        	</div>
+			      	</div>
+			      	<div class="field">
+			      		<label>Amount</label>
+			        	<div class="ui right labeled input disabled">
+  							<input type="text" placeholder="Amount" id="amount" name="amount" value="<%= amount %>">
+  							<div class="ui basic label">£</div>
+						</div>
+			      	</div>
+			    </div>
+			    <div class="two fields">
+			    	<div class="field">
+			    		<a class="ui left floated labeled icon button" href="/employees">
+				    		<i class="angle left icon"></i> Back
+				    	</a>
+			    	</div>
+			    	<div class="field">
+				    	<button class="ui right floated labeled icon button positive" type="submit">
+				    		<i class="handshake icon"></i> Approve
+				    	</button>
+				    	<input type="hidden" name="bonus" value="<%= bonus %>">
+				    	<input type="hidden" name="_method" value="PUT" />
+				    </div>
+			    </div>   
+			</form>
+		</div>
+		<div class="ui container">
+			<% if (messages.error) { %>
+				<div class="ui icon message negative">
+					<i class="warning sign icon"></i>
+					<div class="content">
+					<div class="header">Error !</div>
+						<p><%- messages.error %></p>
+					</div>
+				</div>
+			<% } %>
+
+			<% if (messages.success) { %>
+				<div class="ui icon message positive">
+					<i class="checkmark icon"></i>
+					<div class="content">
+					<div class="header">Approved !</div>
+						<p><%- messages.success %></p>
+					</div>
+				</div>
+			<% } %>
+		</div>
+	</div>
+</div>
+
+<!-- including footer content which is common for all pages -->
+<%- include ../layouts/footer.ejs %>
+
+

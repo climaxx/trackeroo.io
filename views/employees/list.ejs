@@ -1,0 +1,62 @@
+<!-- including header content which is common for all pages -->
+<%- include ../layouts/header.ejs %>
+<!-- including sidebar content which is common for all pages -->	
+<%- include ../layouts/sidebar.ejs %>	
+
+<div class="thirteen wide column">
+	<div class="ui grid">
+		<!-- including account content which is common for all pages -->
+		<%- include ../layouts/account.ejs %>
+		<div class="sixteen wide column"> 
+			<h3 class="ui dividing header">
+				<i class="credit card alternative icon"></i>
+				<div class="content">Payments</div>
+			</h3>
+			<table class="ui striped table">
+			 	<thead>
+			    	<tr>
+						<th class="one wide column center aligned trackeroo-head">ID</th>
+						<th class="four wide column left aligned trackeroo-head">Card Number</th>
+						<th class="two wide column left aligned trackeroo-head">First Name</th>
+						<th class="two wide column left aligned trackeroo-head">Last Name</th>
+						<th class="three wide column left aligned trackeroo-head">Email</th>
+						<th class="one wide column center aligned trackeroo-head">Bonus</th>
+						<th class="one wide column center aligned trackeroo-head">Amount</th>
+						<th class="two wide column center aligned trackeroo-head">Actions</th>
+			  		</tr>
+			  	</thead>
+			  	<tbody>
+			    	<% if (data) { %>
+					<% data.forEach(function(employee){ %>
+						<tr>
+							<td class="center aligned"><%= employee.id %></td>
+							<td class="left aligned"><%= employee.card_number %></td>
+							<td class="left aligned"><%= employee.first_name %></td>
+							<td class="left aligned"><%= employee.last_name %></td>
+							<td class="left aligned"><%= employee.email %></td>
+							<td class="center aligned">
+								<% if(employee.bonus){ %>
+									<span>YES</span>
+		 						<% } else{ %>  
+		   							<span>NO</span>
+								<% } %>
+							</td>
+							<td class="center aligned"><%= employee.amount %>&nbsp;£</td>
+							<td class="center aligned">
+								<% if(employee.bonus){ %>
+									<a href="/employees/edit/<%= employee.id %>" class="mini ui fluid button positive">PAY NOW</a>
+		 						<% } else{ %>  
+		   							<button class="mini ui fluid button negative">WAS PAID</button>
+								<% } %>
+							</td>
+						</tr>
+					<% }) %>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<!-- including footer content which is common for all pages -->
+<%- include ../layouts/footer.ejs %>

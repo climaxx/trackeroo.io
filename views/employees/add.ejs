@@ -1,0 +1,70 @@
+<!-- including header content which is common for all pages -->
+<%- include ../layouts/header.ejs %>
+<!-- including sidebar content which is common for all pages -->	
+<%- include ../layouts/sidebar.ejs %>		
+
+<div class="thirteen wide column">
+	<div class="ui grid">
+		<!-- including account content which is common for all pages -->
+		<%- include ../layouts/account.ejs %>
+
+		<div class="sixteen wide column"> 
+			<form class="ui form"  action="/employees/add" method="post" name="form1">
+				<h3 class="ui dividing header">
+					<i class="address card outline icon"></i>
+					<div class="content">Add New Employee</div>
+				</h3>
+			    <div class="two fields">
+			    	<div class="field">
+			      		<label>First Name</label>
+			        	<input type="text" name="first_name" placeholder="First Name" value="<%= first_name %>">
+			      	</div>
+			      	<div class="field">
+			      		<label>Last Name</label>
+			        	<input type="text" name="last_name" placeholder="Last Name" value="<%= last_name %>">
+			      	</div>
+			    </div>
+			    <div class="two fields">
+			    	<div class="field">
+			      		<label>Email</label>
+			        	<input type="text" name="email" placeholder="Email" value="<%= email %>">
+			      	</div>
+			      	<div class="field">
+			      		<label>Department</label>
+			        	<input type="hidden" name="bonus" value="0">
+			        	<input type="hidden" name="amount" value="0.00">
+			        	<input type="hidden" name="card_number" value="XXX">
+			        	<input type="hidden" name="id_depart" value="0">
+			      	</div>
+			    </div>
+			    <div class="field">
+			    	<button class="ui right floated button positive" type="submit">Save</button>
+			    </div>
+			</form>
+		</div>
+		<div class="ui container">
+			<% if (messages.error) { %>
+				<div class="ui icon message negative">
+					<i class="warning sign icon"></i>
+					<div class="content">
+					<div class="header">Error !</div>
+						<p><%- messages.error %></p>
+					</div>
+				</div>
+			<% } %>
+
+			<% if (messages.success) { %>
+				<div class="ui icon message positive">
+					<i class="checkmark icon"></i>
+					<div class="content">
+					<div class="header">Done !</div>
+						<p><%- messages.success %></p>
+					</div>
+				</div>
+			<% } %>
+		</div>
+	</div>
+</div>
+
+<!-- including footer content which is common for all pages -->
+<%- include ../layouts/footer.ejs %>
