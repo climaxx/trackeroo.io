@@ -116,6 +116,7 @@ app.use('/employees', employees);
 // include required plugins "jQuery", "Semantic-UI", "Custom CSS", "Images"
 app.use('/assets', express.static(__dirname + '/assets'));
 app.use('/scripts', express.static(__dirname + '/scripts'));
+app.use('/tmp', express.static(__dirname + '/tmp'));
 
 app.listen(3000, function(){
 	console.log('Server running at port 3000: http://127.0.0.1:3000');

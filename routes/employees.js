@@ -1,5 +1,24 @@
 var express = require('express');
 var app = express();
+var fs = require('fs');
+
+app.get('/latest', function(req, res, next) {
+		fs.readFile('latest.txt', function(err, data) {
+			if (err) throw err
+    		console.log(data);
+
+    		var object = JSON.parse(data);
+
+    		res.render('employees/latest', {
+				title: 'Trackeroo1984 - Latest Employees',
+				data: data,
+				object: object
+			});
+
+    	// res.writeHead(200, {'Content-Type': 'application/json'});
+	});
+});
+
 
 // SHOW LIST OF EMPLOYEES
 app.get('/', function(req, res, next) {
@@ -147,8 +166,12 @@ app.get('/by_card/(:id)', function(req, res, next){
                     "amount": rows[0].amount
                 };
 			}
+			var data = JSON.stringify(json_response);
+			fs.writeFile("latest.txt", data, function(err, data){
+			    if (err) throw err
+			    console.log('The file has been saved');
+			});
             res.json(json_response);
-
 		});
 	});
 });
